@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 @Service
-public class Opentsdb1 {
+public class OpentsdbSyc {
     /**
-     * 同步写入 opentsdb 测试
+     * 同步写入 opentsdb
      * @param count
      * @param batchNum
      * @return
@@ -43,7 +43,7 @@ public class Opentsdb1 {
        List<Point> pointList = new ArrayList<>();
        for (Point point:points) {
            pointList.add(point);
-           //batchNum 这个数字很关键 同步写数据的时候会默认每500条提交一次 batchNum*500就是每次提交的数量 不能太大 具体原因还没找到
+           //batchNum 这个数字很关键 同步写数据的时候会默认每500提交一次 batchNum*500就是每次提交的数量 不能太大 具体原因还没找到
            if (pointList.size() == batchNum){
                List<Point> pointListB = pointList;
                DetailsResult detailsResult = tsdb.putSync(pointListB, DetailsResult.class);
