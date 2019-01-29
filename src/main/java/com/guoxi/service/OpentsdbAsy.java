@@ -1,6 +1,7 @@
 package com.guoxi.service;
 
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.aliyun.hitsdb.client.HiTSDB;
 import com.aliyun.hitsdb.client.HiTSDBClientFactory;
 import com.aliyun.hitsdb.client.HiTSDBConfig;
@@ -62,7 +63,7 @@ public class OpentsdbAsy {
                 .httpConnectTimeout(90)
 
                 // IO 线程数，默认为1。
-                 .ioThreadCount(10)
+                .ioThreadCount(400)
 
                 // 异步写开关。默认为 true。推荐异步写。
                 .asyncPut(true)
@@ -107,13 +108,18 @@ public class OpentsdbAsy {
                     .build();
 
             // 1秒提交1次
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                System.out.println("处理失败");
+//            }
             tsdb.put(point);
             System.out.println("现在插入第" + (i + 1) + "条数据");
 
         }
         long endTime = System.currentTimeMillis();
         System.out.println("耗时：" + (endTime - startTime) + "毫秒");
-        return  endTime - startTime;
+        return endTime - startTime;
 
     }
 
