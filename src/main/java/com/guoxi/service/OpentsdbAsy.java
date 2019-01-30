@@ -51,7 +51,7 @@ public class OpentsdbAsy {
 
         HiTSDBConfig config = HiTSDBConfig
                 // 配置地址，第一个参数可以是 HiTSDB 的域名或 IP。第二个参数表示 HiTSDB 端口。
-                .address("192.168.155.161", 4242)
+                .address("192.168.155.163", 4242)
 
                 // 只读开关，默认为 false。当 readonly 设置为 true 时，异步写开关会被关闭。
                 .readonly(false)

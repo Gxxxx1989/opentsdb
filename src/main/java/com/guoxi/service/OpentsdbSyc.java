@@ -19,7 +19,7 @@ public class OpentsdbSyc {
      */
    public  long putData(int count,int batchNum){
        // 创建 HiTSDB 对象
-       HiTSDBConfig config = HiTSDBConfig.address("192.168.155.161", 4242).config();
+       HiTSDBConfig config = HiTSDBConfig.address("192.168.155.163", 4242).config();
        HiTSDB tsdb = HiTSDBClientFactory.connect(config);
 
        List<Point> points = new ArrayList<>();
@@ -27,8 +27,8 @@ public class OpentsdbSyc {
        //构建 Point
        for (int i = 0; i < count; i++) {
            long timestamp = System.currentTimeMillis();
-           Point point = Point.metric("a")
-                   .tag("b", "c")
+           Point point = Point.metric("guoxi1")
+                   .tag("guoxi1", "guoxi1")
                    .value(timestamp + i, Math.random() + i)
                    .build();
 
