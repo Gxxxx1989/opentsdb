@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
-public class OpentsdbSyc {
+public class tmp {
     /**
      * 同步写入 opentsdb
      * @param count
